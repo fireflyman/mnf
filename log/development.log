@@ -1,0 +1,2069 @@
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (47.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (93.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "forums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100526065941')[0m
+Migrating to CreateTopics (20100526070100)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "forum_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100526070100')[0m
+Migrating to CreateReplies (20100526070217)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "replies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "topic_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100526070217')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("forums")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("replies")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("topics")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 15:10:28) [GET]
+
+ActionController::RoutingError (No route matches "/products" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:10:34) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/forums
+Rendering forums/index
+Completed in 2094ms (View: 1860, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2010-05-26 15:10:44) [GET]
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/topics
+Rendering topics/index
+Completed in 93ms (View: 47, DB: 0) | 200 OK [http://localhost/topics]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 15:10:55) [GET]
+
+ActionController::RoutingError (No route matches "/replices" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 15:11:08) [GET]
+
+ActionController::RoutingError (No route matches "/repliess" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:11:11) [GET]
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" [0m
+Rendering template within layouts/replies
+Rendering replies/index
+Completed in 203ms (View: 172, DB: 0) | 200 OK [http://localhost/replies]
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:16:52) [GET]
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" [0m
+Rendering template within layouts/application
+Rendering replies/index
+
+ActionView::TemplateError (undefined local variable or method `root_path' for #<ActionView::Base:0x4afbd0c>) on line #19 of app/views/layouts/application.html.erb:
+16:         <div id='head'><span></span></div>
+17:         <div id="navbar">
+18:           <ul>
+19:             <li class="but"><span><%= link_to '首页', root_path %></span></li>
+20:             <li class="but"><span><a href="#"><strong>新闻</strong></a></span></li>
+21:             <li class="but"><span><a href="#"><strong>产品展示</strong></a></span></li>
+22:             <li class="but"><span><a href="#"><strong>Credits</strong></a></span></li>
+
+    app/views/layouts/application.html.erb:19
+    app/controllers/replies_controller.rb:7:in `index'
+
+Rendered rescues/_trace (234.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:22:49) [GET]
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" [0m
+Rendering template within layouts/application
+Rendering replies/index
+
+ActionView::TemplateError (undefined local variable or method `teams_path' for #<ActionView::Base:0x4c282d4>) on line #23 of app/views/layouts/application.html.erb:
+20:             <li class="but"><span><a href="#"><strong>新闻</strong></a></span></li>
+21:             <li class="but"><span><a href="#"><strong>产品展示</strong></a></span></li>
+22:             <li class="but"><span><a href="#"><strong>Credits</strong></a></span></li>
+23:             <li class="but"><span><%= link_to '开发团队', teams_path %></span></li>
+24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
+25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
+26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
+
+    app/views/layouts/application.html.erb:23
+    app/controllers/replies_controller.rb:7:in `index'
+
+Rendered rescues/_trace (265.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:23:07) [GET]
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" [0m
+Rendering template within layouts/application
+Rendering replies/index
+
+ActionView::TemplateError (undefined local variable or method `teams_path' for #<ActionView::Base:0x4a6c06c>) on line #25 of app/views/layouts/application.html.erb:
+22:             <li class="but"><span><a href="#"><strong>Credits</strong></a></span></li>
+23:             
+24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
+25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
+26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
+27:           </ul>
+28:         </div>
+
+    app/views/layouts/application.html.erb:25
+    app/controllers/replies_controller.rb:7:in `index'
+
+Rendered rescues/_trace (359.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:23:17) [GET]
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" [0m
+Rendering template within layouts/application
+Rendering replies/index
+
+ActionView::TemplateError (undefined local variable or method `teams_path' for #<ActionView::Base:0x4bd06c4>) on line #25 of app/views/layouts/application.html.erb:
+22:             <li class="but"><span><a href="#"><strong>Credits</strong></a></span></li>
+23:             
+24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
+25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
+26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
+27:           </ul>
+28:         </div>
+
+    app/views/layouts/application.html.erb:25
+    app/controllers/replies_controller.rb:7:in `index'
+
+Rendered rescues/_trace (203.0ms)
+Rendered rescues/_request_and_response (16.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:23:29) [GET]
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" [0m
+Rendering template within layouts/application
+Rendering replies/index
+
+ActionView::TemplateError (undefined local variable or method `about_path' for #<ActionView::Base:0x4a41fc4>) on line #26 of app/views/layouts/application.html.erb:
+23:             
+24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
+25:             
+26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
+27:           </ul>
+28:         </div>
+29:   	  </div>
+
+    app/views/layouts/application.html.erb:26
+    app/controllers/replies_controller.rb:7:in `index'
+
+Rendered rescues/_trace (484.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#index (for 127.0.0.1 at 2010-05-26 15:23:41) [GET]
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" [0m
+Rendering template within layouts/application
+Rendering replies/index
+Completed in 63ms (View: 32, DB: 0) | 200 OK [http://localhost/replies]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:23:47) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 110ms (View: 32, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:23:51) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#new (for 127.0.0.1 at 2010-05-26 15:24:04) [GET]
+Rendering template within layouts/application
+Rendering forums/new
+Completed in 407ms (View: 376, DB: 0) | 200 OK [http://localhost/forums/new]
+
+
+Processing ForumsController#create (for 127.0.0.1 at 2010-05-26 15:25:37) [POST]
+  Parameters: {"forum"=>{"name"=>"惠州商盟", "description"=>"   一個普通的夢想,一直想構建一個論壇來代替Discuz!版本的論壇,但一直沒動工,現在動工開開遲了沒. "}, "commit"=>"Create", "authenticity_token"=>"4c+bqhSTHPgEACER2RjcLhWw4Jc6R9LZQMCUMfrd1MU="}
+  [4;36;1mForum Create (0.0ms)[0m   [0;1mINSERT INTO "forums" ("name", "updated_at", "description", "created_at") VALUES('惠州商盟', '2010-05-26 07:25:37', ' 一個普通的夢想,一直想構建一個論壇來代替Discuz!版本的論壇,但一直沒動工,現在動工開開遲了沒. ', '2010-05-26 07:25:37')[0m
+Redirected to http://localhost:3000/forums/1
+Completed in 141ms (DB: 0) | 302 Found [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 15:25:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+Completed in 234ms (View: 188, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:25:41) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 15:25:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:25:48) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 46ms (View: 31, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:26:04) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 47ms (View: 31, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 15:26:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:26:08) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 63ms (View: 32, DB: 0) | 200 OK [http://localhost/forums]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+Migrating to CreateTopics (20100526070100)
+Migrating to CreateReplies (20100526070217)
+Migrating to AddCounter (20100526073523)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "forums" ADD "topics_count" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "forums" ADD "replies_count" integer DEFAULT 0[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "topics" ADD "replies_count" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100526073523')[0m
+Migrating to AddForumId (20100526074437)
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "replies" ADD "forum_id" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100526074437')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("forums")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("replies")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("topics")[0m
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:50:49) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 296ms (View: 187, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 15:51:40) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 94ms (View: 62, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 16:20:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mTopic Load (16.0ms)[0m   [0mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+
+ActionView::TemplateError (undefined method `new_forum_topic_path' for #<ActionView::Base:0x6e0abcc>) on line #27 of app/views/forums/show.html.erb:
+24:  <% end %>
+25: </table>
+26: 
+27: <%= link_to "<img src='/images/post.gif' border='0' alt='发表新主题'/>", new_forum_topic_path(@forum) %>
+28: <%= link_to 'Edit', edit_forum_path(@forum) %> |<%= link_to 'Back', forums_path %> 
+29: <%= will_paginate @topics,{
+30:     :prev_label => '上一页',
+
+    app/views/forums/show.html.erb:27
+    app/controllers/forums_controller.rb:18:in `show'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (329.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 16:21:01) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 63, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 16:22:47) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 47, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 16:22:51) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 204ms (View: 32, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 16:23:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 78ms (View: 0, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 16:23:36) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+Completed in 125ms (View: 47, DB: 0) | 200 OK [http://localhost/forums/1/topics/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+Migrating to CreateTopics (20100526070100)
+Migrating to CreateReplies (20100526070217)
+Migrating to AddCounter (20100526073523)
+Migrating to AddForumId (20100526074437)
+Migrating to AddHits (20100526085307)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+Migrating to CreateTopics (20100526070100)
+Migrating to CreateReplies (20100526070217)
+Migrating to AddCounter (20100526073523)
+Migrating to AddForumId (20100526074437)
+Migrating to AddHits (20100526085307)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "topics" ADD "hits" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100526085307')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("forums")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("replies")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("topics")[0m
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 17:46:47) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 203ms (View: 172, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 17:46:49) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 63ms (View: 32, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 17:47:48) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 17:47:51) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 62ms (View: 47, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 17:47:56) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 110ms (View: 32, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 17:47:59) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d6b540>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (266.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 17:55:55) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e38e3c>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (453.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ForumsController#edit (for 127.0.0.1 at 2010-05-26 18:03:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering forums/edit
+Completed in 93ms (View: 62, DB: 0) | 200 OK [http://localhost/forums/1/edit]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 18:03:16) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 47ms (View: 32, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:03:20) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6ec2d80>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (375.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:03:24) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6ccc968>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (234.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:04:45) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6cfa958>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (391.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 18:05:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (16.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 109ms (View: 31, DB: 16) | 200 OK [http://localhost/forums/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 18:05:47) [GET]
+
+NameError (uninitialized constant SiteController):
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (156.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:09:00) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (stack level too deep) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/models/topic.rb:16:in `sticky'
+    app/models/topic.rb:16:in `sticky'
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (235.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:09:03) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (stack level too deep) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/models/topic.rb:16:in `sticky'
+    app/models/topic.rb:16:in `sticky'
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (422.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:09:17) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6f12d08>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (406.0ms)
+Rendered rescues/_request_and_response (16.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:10:09) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6cf3dd8>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:11:03) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e6f414>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (656.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:11:30) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6db481c>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (15.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:11:34) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e3aaac>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (406.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:17:29) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6db4cb8>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (235.0ms)
+Rendered rescues/_request_and_response (15.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:24:17) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e389b4>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (406.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:24:48) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x7002e5c>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky? %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/models/topic.rb:16:in `sticky?'
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (266.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:25:14) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d99c10>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box "sticky" %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (391.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:25:26) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6f02da4>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box 'sticky' %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (437.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 18:25:40) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 281ms (View: 234, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 18:26:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:26:39) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `check_box_tag' for #<ActionView::Helpers::FormBuilder:0x6ec8884>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box_tag :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (625.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:26:54) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d0248c>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:   <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (266.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:27:11) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+Rendered topics/_form (31.0ms)
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 187ms (View: 140, DB: 0) | 200 OK [http://localhost/forums/1/topics/new]
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:27:22) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+
+ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d625f8>) on line #7 of app/views/topics/_form.rhtml:
+4: 
+5:   <p>
+6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
+7:    <%= form.check_box :sticky %> 置顶 </p>
+8: 
+9:   <%= form.hidden_field :forum_id %>
+10:   <p>
+
+    app/views/topics/_form.rhtml:7:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/_form.rhtml:3:in `_run_rhtml_app47views47topics47_form46rhtml_locals_form_object'
+    app/views/topics/new.html.erb:2
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+Migrating to CreateTopics (20100526070100)
+Migrating to CreateReplies (20100526070217)
+Migrating to AddCounter (20100526073523)
+Migrating to AddForumId (20100526074437)
+Migrating to AddHits (20100526085307)
+Migrating to AddStickyToTopic (20100526103020)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "topics" ADD "sticky" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100526103020')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (15.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("forums")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("replies")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("topics")[0m
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:33:12) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+Rendered topics/_form (94.0ms)
+  [4;36;1mForum Load (16.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 250ms (View: 187, DB: 16) | 200 OK [http://localhost/forums/1/topics/new]
+
+
+Processing TopicsController#create (for 127.0.0.1 at 2010-05-26 18:33:49) [POST]
+  Parameters: {"commit"=>"提交", "authenticity_token"=>"4c+bqhSTHPgEACER2RjcLhWw4Jc6R9LZQMCUMfrd1MU=", "topic"=>{"body"=>"明日復明日,明日何其甚,我生待明日,明日白了頭", "title"=>"In the futrue I know I was wrong", "forum_id"=>"1", "sticky"=>"1"}}
+  [4;35;1mTopic Create (0.0ms)[0m   [0mINSERT INTO "topics" ("hits", "updated_at", "title", "body", "replies_count", "forum_id", "sticky", "created_at") VALUES(0, '2010-05-26 10:33:49', 'In the futrue I know I was wrong', '明日復明日,明日何其甚,我生待明日,明日白了頭', 0, 1, 1, '2010-05-26 10:33:49')[0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mForum Update (0.0ms)[0m   [0mUPDATE "forums" SET "topics_count" = COALESCE("topics_count", 0) + 1 WHERE ("id" = 1) [0m
+Redirected to http://localhost:3000/topics/1
+Completed in 219ms (DB: 0) | 302 Found [http://localhost/topics]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:33:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (94.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (953.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (31.0ms)
+Completed in 1250ms (View: 1094, DB: 94) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2010-05-26 18:33:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+Rendered topics/_form (31.0ms)
+  [4;35;1mForum Load (16.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 141ms (View: 78, DB: 16) | 200 OK [http://localhost/topics/1/edit]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 18:34:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 344ms (View: 109, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 18:34:07) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 47, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 18:34:16) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 141ms (View: 31, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:34:30) [GET]
+  Parameters: {"id"=>"1", "forum_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;35;1mTopic Update (94.0ms)[0m   [0mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 219ms (View: 78, DB: 94) | 200 OK [http://localhost/forums/1/topics/1]
+
+
+Processing RepliesController#create (for 127.0.0.1 at 2010-05-26 18:35:06) [POST]
+  Parameters: {"topic_id"=>"1", "commit"=>"回复", "reply"=>{"body"=>"你這個雞巴老~來和諧我把", "title"=>"日啊"}, "authenticity_token"=>"4c+bqhSTHPgEACER2RjcLhWw4Jc6R9LZQMCUMfrd1MU="}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mReply Create (0.0ms)[0m   [0;1mINSERT INTO "replies" ("topic_id", "updated_at", "title", "body", "forum_id", "created_at") VALUES(1, '2010-05-26 10:35:07', '日啊', '你這個雞巴老~來和諧我把', NULL, '2010-05-26 10:35:07')[0m
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mTopic Update (0.0ms)[0m   [0;1mUPDATE "topics" SET "replies_count" = COALESCE("replies_count", 0) + 1 WHERE ("id" = 1) [0m
+Redirected to http://localhost:3000/topics/1
+Completed in 438ms (DB: 0) | 302 Found [http://localhost/topics/1/replies]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:35:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;35;1mTopic Update (109.0ms)[0m   [0mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (125.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 547ms (View: 375, DB: 109) | 200 OK [http://localhost/topics/1]
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:35:42) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+NoMethodError (undefined method `buuild' for #<Class:0x6fa642c>):
+  app/controllers/replies_controller.rb:30:in `new'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (172.0ms)
+Rendered rescues/_request_and_response (15.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:36:17) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (undefined method `error_message_for' for #<ActionView::Base:0x6df16f4>) on line #3 of app/views/replies/new.html.erb:
+1: <h1>New reply</h1>
+2: 
+3: <%= error_message_for :reply %>
+4: 
+5: <%= render(:partial => 'form') %>
+6:   
+
+    app/views/replies/new.html.erb:3
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (375.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:37:09) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Rendered replies/_form (16.0ms)
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x6fb4220>) on line #7 of app/views/replies/new.html.erb:
+4: 
+5: <%= render(:partial => 'form') %>
+6:   
+7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
+8:   
+9:  
+10:   <p>
+
+    app/views/replies/new.html.erb:7
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (312.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:37:53) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Rendered replies/_form (31.0ms)
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x6d4d1a8>) on line #7 of app/views/replies/new.html.erb:
+4: 
+5: <%= render(:partial => 'form') %>
+6:   
+7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
+8:   
+9:  
+10:   
+
+    app/views/replies/new.html.erb:7
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (218.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:37:56) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Rendered replies/_form (15.0ms)
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x6e5201c>) on line #7 of app/views/replies/new.html.erb:
+4: 
+5: <%= render(:partial => 'form') %>
+6:   
+7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
+8:   
+9:  
+10:   
+
+    app/views/replies/new.html.erb:7
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (562.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:38:04) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Rendered replies/_form (16.0ms)
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x7039560>) on line #7 of app/views/replies/new.html.erb:
+4: 
+5: <%= render(:partial => 'form') %>
+6:   
+7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
+8:   
+9:  
+10:   
+
+    app/views/replies/new.html.erb:7
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:38:25) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Rendered replies/_form (16.0ms)
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #13 of app/views/replies/new.html.erb:
+10:   
+11: 
+12: 
+13: <%= link_to 'Back', forum_topic_path(@forum, @topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:13
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:39:40) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (375.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:41:37) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:32:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (297.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:44:10) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:10:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:44:13) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:10:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (266.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:45:36) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:10:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:48:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (110.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (532.0ms)
+Rendered topics/_reply (62.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (15.0ms)
+Completed in 1000ms (View: 734, DB: 110) | 200 OK [http://localhost/topics/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 18:48:07) [GET]
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 110ms (View: 78, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 18:48:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 187ms (View: 46, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:48:24) [GET]
+  Parameters: {"id"=>"1", "forum_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (78.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (16.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 219ms (View: 79, DB: 78) | 200 OK [http://localhost/forums/1/topics/1]
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:48:27) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (15.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:10:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (297.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2010-05-26 18:51:09) [GET]
+  Parameters: {"forum_id"=>"1"}
+Rendering template within layouts/application
+Rendering topics/new
+Rendered topics/_form (32.0ms)
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Completed in 281ms (View: 250, DB: 0) | 200 OK [http://localhost/forums/1/topics/new]
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:52:27) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+
+ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
+20:   </p>
+21: <% end %>
+22: 
+23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
+
+    (eval):16:in `forum_topic_path'
+    app/views/replies/new.html.erb:23
+    app/controllers/replies_controller.rb:10:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:52:54) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Completed in 94ms (View: 32, DB: 0) | 200 OK [http://localhost/topics/1/replies/new]
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:53:51) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Completed in 141ms (View: 63, DB: 0) | 200 OK [http://localhost/topics/1/replies/new]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:53:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (16.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (109.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (15.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (16.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 266ms (View: 79, DB: 140) | 200 OK [http://localhost/topics/1]
+
+
+Processing RepliesController#new (for 127.0.0.1 at 2010-05-26 18:53:56) [GET]
+  Parameters: {"topic_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering replies/new
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/topics/1/replies/new]
+
+
+Processing RepliesController#create (for 127.0.0.1 at 2010-05-26 18:54:27) [POST]
+  Parameters: {"topic_id"=>"1", "commit"=>"Create", "reply"=>{"body"=>"其實我只是來買饅頭的.....不過剛好路過這里而已...", "title"=>"Y的", "forum_id"=>"1"}, "authenticity_token"=>"4c+bqhSTHPgEACER2RjcLhWw4Jc6R9LZQMCUMfrd1MU="}
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mReply Create (0.0ms)[0m   [0mINSERT INTO "replies" ("topic_id", "updated_at", "title", "body", "forum_id", "created_at") VALUES(1, '2010-05-26 10:54:27', 'Y的', '其實我只是來買饅頭的.....不過剛好路過這里而已...', 1, '2010-05-26 10:54:27')[0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mForum Update (0.0ms)[0m   [0mUPDATE "forums" SET "replies_count" = COALESCE("replies_count", 0) + 1 WHERE ("id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mTopic Update (0.0ms)[0m   [0mUPDATE "topics" SET "replies_count" = COALESCE("replies_count", 0) + 1 WHERE ("id" = 1) [0m
+Redirected to http://localhost:3000/topics/1
+Completed in 171ms (DB: 0) | 302 Found [http://localhost/topics/1/replies]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 18:54:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (78.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (15.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (0.0ms)
+Completed in 203ms (View: 78, DB: 78) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:03:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (15.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (110.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (15.0ms)
+Rendered topics/_reply (32.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (31.0ms)
+Completed in 469ms (View: 297, DB: 125) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:04:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (110.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (16.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (15.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (0.0ms)
+Completed in 265ms (View: 77, DB: 126) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:04:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (109.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (16.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (16.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (0.0ms)
+Completed in 266ms (View: 78, DB: 125) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:04:56) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (16.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (109.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (16.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (0.0ms)
+Completed in 406ms (View: 78, DB: 125) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:05:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (63.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (16.0ms)
+Rendered topics/_reply (16.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (15.0ms)
+Completed in 234ms (View: 93, DB: 63) | 200 OK [http://localhost/topics/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:05:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (94.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (16.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 266ms (View: 94, DB: 94) | 200 OK [http://localhost/topics/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 19:06:09) [GET]
+  [4;36;1mForum Load (15.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 63ms (View: 32, DB: 15) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 19:06:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 141ms (View: 32, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-05-26 19:06:50) [GET]
+  Parameters: {"id"=>"1", "forum_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (281.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mForum Load (16.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+Rendered topics/_reply (15.0ms)
+Rendered topics/_reply (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 438ms (View: 78, DB: 297) | 200 OK [http://localhost/forums/1/topics/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-05-26 19:06:56) [GET]
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 47, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-05-26 19:07:12) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 140ms (View: 47, DB: 0) | 200 OK [http://localhost/forums/1]
