@@ -1,0 +1,25 @@
+<% title "编辑用户"  %>
+<fieldset>
+  <% form_for(@user) do |f| %>
+    <%= f.error_messages %>
+    <p>
+      <%= f.label :login,"帐号" %><br />
+      <%= f.text_field :login,:disabled => true  %>
+    </p>
+    <p>
+      <%= f.label :email,"邮箱" %><br />
+      <%= f.text_field :email %>
+    </p>
+    <% if Authorization.current_user.role_symbols.to_s != "ptuser" %>
+     <p>
+       <%= f.label :roles,"角色" %><br />
+       <%= f.select :roles, [['球員','fbplayer'],['主辦方','Sponsor'],['供應商','Supplier']], {:include_blank=>"请选择",:selected => 0} %>
+     </p>
+     <% end %>
+     <p>
+       <%= f.submit "更新" %>
+     </p>
+   
+  <% end %>
+</fieldset>
+<%= link_to "返回",url_for(:back) %>

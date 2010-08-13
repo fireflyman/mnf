@@ -2067,3 +2067,912 @@ Rendering forums/show
   [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
 Completed in 140ms (View: 47, DB: 0) | 200 OK [http://localhost/forums/1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+Migrating to CreateTopics (20100526070100)
+Migrating to CreateReplies (20100526070217)
+Migrating to AddCounter (20100526073523)
+Migrating to AddForumId (20100526074437)
+Migrating to AddHits (20100526085307)
+Migrating to AddStickyToTopic (20100526103020)
+Migrating to CreateUsers (20100618023216)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime) [0m
+  [4;35;1mSQL (16.0ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100618023216')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("forums")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("replies")[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mPRAGMA index_list("topics")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20100526065941)
+Migrating to CreateTopics (20100526070100)
+Migrating to CreateReplies (20100526070217)
+Migrating to AddCounter (20100526073523)
+Migrating to AddForumId (20100526074437)
+Migrating to AddHits (20100526085307)
+Migrating to AddStickyToTopic (20100526103020)
+Migrating to CreateUsers (20100618023216)
+Migrating to AddRolesToUsers (20100618024137)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "users" ADD "roles" varchar(255) DEFAULT 'ptuser'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100618024137')[0m
+  [4;35;1mSQL (16.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("forums")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("replies")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("topics")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-06-18 10:51:06) [GET]
+
+ActionController::RoutingError (No route matches "/products" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-06-18 10:51:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 1719ms (View: 1625, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-06-18 10:51:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Rendered users/_user_bar (15.0ms)
+Completed in 109ms (View: 47, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-06-18 10:51:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 15, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-06-18 10:52:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Rendered users/_user_bar (0.0ms)
+Completed in 62ms (View: 0, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-06-18 11:03:02) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Rendered users/_user_bar (16.0ms)
+Completed in 203ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-18 11:03:04) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/users
+Rendering users/new
+Rendered users/_user_bar (0.0ms)
+Completed in 109ms (View: 47, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:51:52) [GET]
+
+ActionController::RoutingError (No route matches "/products" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:52:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"seach"}
+
+NameError (uninitialized constant SeachController):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (297.0ms)
+Rendered rescues/_request_and_response (15.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:52:27) [GET]
+
+ActionController::RoutingError (No route matches "/seachs" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:52:30) [GET]
+  Parameters: {"action"=>"index", "controller"=>"seach"}
+
+NameError (uninitialized constant SeachController):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:52:58) [GET]
+
+ActionController::RoutingError (No route matches "/topic" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2010-08-13 16:53:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"topics"}
+
+ActionController::UnknownAction (No action responded to index. Actions: create, destroy, edit, new, pages_for, show, and update):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 16:53:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 281ms (View: 250, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-08-13 16:53:16) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"forums"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 1078ms (View: 156, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 16:53:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 63ms (View: 31, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-08-13 16:53:25) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"forums"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 219ms (View: 31, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-08-13 16:53:28) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"topics", "forum_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (93.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+
+ActionView::TemplateError (undefined local variable or method `first_reply' for #<Topic:0x485dce4>) on line #13 of app/views/topics/_topic.rhtml:
+10:   <td align='left' valign="top" class='post'>
+11:     <%=show_time(@topic.created_at) %>&nbsp;&nbsp;标题:<%=h @topic.title %> 
+12:     <hr width='98%'>
+13:     <p><%= @topic.body %></p>
+14:   </td>
+15: </tr>
+16: <tr>
+
+    app/models/topic.rb:34:in `body'
+    app/views/topics/_topic.rhtml:13:in `_run_rhtml_app47views47topics47_topic46rhtml_locals_object_topic'
+    app/views/topics/show.html.erb:5
+    app/controllers/topics_controller.rb:13:in `show'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+    C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+    C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+    C:/Ruby/bin/thin:19:in `load'
+    C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (235.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-08-13 16:54:09) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"topics", "forum_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (94.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendered topics/_reply (172.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendered topics/_reply (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (15.0ms)
+Completed in 625ms (View: 328, DB: 94) | 200 OK [http://localhost/forums/1/topics/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:54:37) [GET]
+
+ActionController::RoutingError (No route matches "/search" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 16:54:43) [GET]
+
+ActionController::RoutingError (No route matches "/search/index" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:02:43) [GET]
+
+ActionController::RoutingError (No route matches "/search/index" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:02:47) [GET]
+
+ActionController::RoutingError (No route matches "/search" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:03:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"site"}
+
+NameError (uninitialized constant SiteController):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-08-13 17:04:10) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 218ms (View: 203, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:04:20) [GET]
+
+ActionController::RoutingError (No route matches "/search" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:04:34) [GET]
+  Parameters: {"action"=>"index", "controller"=>"seach"}
+
+NameError (uninitialized constant SeachController):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (110.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:04:55) [GET]
+
+ActionController::RoutingError (No route matches "/seach" with {:method=>:get}):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendering rescues/layout (not_found)
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"search"}
+Rendering template within layouts/application
+Rendering search/index
+Completed in 47ms (View: 47, DB: 0) | 200 OK [http://localhost/search]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 17:05:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (15.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 63ms (View: 32, DB: 15) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#show (for 127.0.0.1 at 2010-08-13 17:05:18) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"forums"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;35;1mTopic Load (0.0ms)[0m   [0mSELECT "topics".* FROM "topics" WHERE ("topics".forum_id = 1) [0m
+  [4;36;1mReply Load (0.0ms)[0m   [0;1mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Rendering template within layouts/application
+Rendering forums/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "replies" WHERE ("replies".topic_id = 1) [0m
+Completed in 219ms (View: 31, DB: 0) | 200 OK [http://localhost/forums/1]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"search"}
+Rendering template within layouts/application
+Rendering search/index
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/search]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:31) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"In the futrue I know I was wrong"}
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 93ms (View: 0, DB: 0) | 200 OK [http://localhost/search?class=topic&query=In+the+futrue+I+know+I+was+wrong]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:33) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"In the futrue I know I was wrong"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 78ms (View: 0, DB: 0) | 200 OK [http://localhost/search?class=topic&query=In+the+futrue+I+know+I+was+wrong]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:36) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"In "}
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 219ms (View: 16, DB: 0) | 200 OK [http://localhost/search?class=topic&query=In+]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:38) [GET]
+  Parameters: {"class"=>"post", "action"=>"index", "controller"=>"search", "query"=>"In "}
+
+NameError (uninitialized constant SearchController::Post):
+  app/controllers/search_controller.rb:10:in `index'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (140.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:05:55) [GET]
+  Parameters: {"class"=>"post", "action"=>"index", "controller"=>"search", "query"=>"In the futrue"}
+
+NameError (uninitialized constant SearchController::Post):
+  app/controllers/search_controller.rb:10:in `index'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (140.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2010-08-13 17:06:00) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"topics", "forum_id"=>"1"}
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mReply Load (0.0ms)[0m   [0mSELECT * FROM "replies" WHERE ("replies".topic_id = 1) LIMIT 20 OFFSET 0[0m
+  [4;36;1mTopic Update (110.0ms)[0m   [0;1mUPDATE "topics" SET "hits" = COALESCE("hits", 0) + 1 WHERE ("id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_topic (0.0ms)
+  [4;36;1mTopic Load (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendered topics/_reply (15.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendered topics/_reply (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "forums" WHERE ("forums"."id" = 1) [0m
+Rendered topics/_quick_reply (16.0ms)
+Completed in 516ms (View: 234, DB: 110) | 200 OK [http://localhost/forums/1/topics/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-13 17:06:12) [GET]
+  Parameters: {"action"=>"index", "controller"=>"site"}
+
+NameError (uninitialized constant SiteController):
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (110.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 17:06:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 63ms (View: 32, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#new (for 127.0.0.1 at 2010-08-13 17:06:30) [GET]
+  Parameters: {"action"=>"new", "controller"=>"forums"}
+Rendering template within layouts/application
+Rendering forums/new
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/forums/new]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 17:06:34) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 17:08:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.0ms)[0m   [0mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+
+ActionView::TemplateError (No route matches {:action=>"index ", :controller=>"search"}) on line #22 of app/views/layouts/application.html.erb:
+19:             
+20:             <li class="but"><span><a href="#"><strong>新闻</strong></a></span></li>
+21:             <li class="but"><span><a href="#"><strong>产品展示</strong></a></span></li>
+22:             <li class="but"><span><%= link_to '搜索', :controller => 'search',:action => 'index '%></span></li>
+23:             
+24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
+25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
+
+    app/views/layouts/application.html.erb:22
+    app/controllers/forums_controller.rb:7:in `index'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+    C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+    C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+    C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+    C:/Ruby/bin/thin:19:in `load'
+    C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (203.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2010-08-13 17:08:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.0ms)[0m   [0;1mSELECT * FROM "forums" [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 78ms (View: 47, DB: 0) | 200 OK [http://localhost/forums]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:08:51) [GET]
+  Parameters: {"action"=>"index", "controller"=>"search"}
+Rendering template within layouts/application
+Rendering search/index
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/search]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:08:54) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"tk"}
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 141ms (View: 16, DB: 0) | 200 OK [http://localhost/search?class=topic&query=tk]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:08:57) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"1"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 78ms (View: 0, DB: 0) | 200 OK [http://localhost/search?class=topic&query=1]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:08:59) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"2"}
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 94ms (View: 16, DB: 0) | 200 OK [http://localhost/search?class=topic&query=2]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:09:01) [GET]
+  Parameters: {"class"=>"post", "action"=>"index", "controller"=>"search", "query"=>"2"}
+
+NameError (uninitialized constant SearchController::Post):
+  app/controllers/search_controller.rb:10:in `index'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:10:00) [GET]
+  Parameters: {"class"=>"topic", "action"=>"index", "controller"=>"search", "query"=>"2"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendering template within layouts/application
+Rendering search/index
+Completed in 94ms (View: 16, DB: 0) | 200 OK [http://localhost/search?class=topic&query=2]
+
+
+Processing SearchController#index (for 127.0.0.1 at 2010-08-13 17:10:01) [GET]
+  Parameters: {"class"=>"reply", "action"=>"index", "controller"=>"search", "query"=>"2"}
+
+NameError (uninitialized constant SearchController::Post):
+  app/controllers/search_controller.rb:10:in `index'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:76:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `catch'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:74:in `pre_process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:57:in `process'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/connection.rb:42:in `receive_data'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run_machine'
+  C:/Ruby/lib/ruby/gems/1.8/gems/eventmachine-0.12.10-x86-mswin32-60/lib/eventmachine.rb:256:in `run'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/backends/base.rb:57:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/server.rb:156:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/controllers/controller.rb:80:in `start'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `send'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:177:in `run_command'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/lib/thin/runner.rb:143:in `run!'
+  C:/Ruby/lib/ruby/gems/1.8/gems/thin-1.2.7-x86-mswin32/bin/thin:6
+  C:/Ruby/bin/thin:19:in `load'
+  C:/Ruby/bin/thin:19
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (16.0ms)
+Rendering rescues/layout (internal_server_error)

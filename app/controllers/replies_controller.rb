@@ -64,7 +64,7 @@ class RepliesController < ApplicationController
      # format.xml  { head :ok }
     end
   end
-
+protected
  def load_topic
   @topic = Topic.find(params[:topic_id])
  end

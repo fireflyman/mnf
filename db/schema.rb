@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100526103020) do
+ActiveRecord::Schema.define(:version => 20100618024137) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -39,5 +39,20 @@ ActiveRecord::Schema.define(:version => 20100526103020) do
     t.integer  "hits",          :default => 0
     t.integer  "sticky",        :default => 0
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "roles",                                    :default => "ptuser"
+  end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end

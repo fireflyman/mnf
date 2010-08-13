@@ -1,0 +1,28 @@
+<% form_tag '/search', :method => :get ,:style => "margin-left:40%" do %>
+  <input type="radio" name="class" value = "topic" <%= @class == "topic"? 'checked="checked"':'' %>>仅主题贴
+  <input type="radio" name="class" value = "reply" <%= @class == "reply"? 'checked="checked"':'' %>>所有贴子<br>
+  <p>
+    <%= text_field_tag :query, @query %>
+    <%= submit_tag "搜索", :name => nil %>
+  </p>
+<% end %>
+ 
+<% if defined? @results %>
+  <style type="text/css">
+    .hilite{
+      color:#0042BD;
+      background:#F345CC;
+    }
+  </style>
+ 
+  <div id="search_result">
+    <% @results.each do |result| %>
+      <h3>
+        <%= result.highlight(@query,:field => :title,:pre_tag => "<span class='hilite'>",:post_tag => "</span>")%>
+      </h3>
+      <div><%= result.highlight(@query,:field => :body,:num_excerpts => 3,:excerpt_length => 250) %></div>
+      <p>作者：<%=result.author %>  发表时间 <%= result.created_at_s %> 相关度 <= number_to_percentage result.ferret_score*100,:precision => 2 %><p>
+    <% end %>
+  </div>
+  <%= will_paginate @results ,:class => "non_ajax"%>
+<% end %>
