@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
  before_filter :load_topic
- 
+
 
   # GET /replies/new
   # GET /replies/new.xml
@@ -68,5 +68,5 @@ protected
  def load_topic
   @topic = Topic.find(params[:topic_id])
  end
- 
+
 end

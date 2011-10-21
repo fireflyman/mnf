@@ -8,7 +8,7 @@ body {
 }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif; 
+  font-family: verdana, arial, helvetica, sans-serif;
   font-size:   12px;
   line-height: 18px;
   margin: 0px;
@@ -19,7 +19,7 @@ p {margin: 2px; padding: 2px;}
 
 ol, ul { padding: 1em 3em; }
 
-blockquote { 
+blockquote {
   background-color: #F9F7ED;
   margin: 1em 1em;
   padding: 1em 2em;
@@ -51,8 +51,8 @@ table tr td {
   border:1px solid #ddd;
 }
 
-table caption { 
-  font-size: 2em; 
+table caption {
+  font-size: 2em;
   font-weight: bold;
   margin: 1em 0;
 }
@@ -75,10 +75,10 @@ fieldset {
 }
 
 legend { font-weight: bold; }
-label { 
+label {
 	float: left;
 	width: 8em;
-	display:block; 
+	display:block;
 }
 
 /* 自定义id */
@@ -101,7 +101,7 @@ div#center {
 }
 
 div#header {
-  font-weight: bold;	
+  font-weight: bold;
   height: 130px;
   margin: 6px auto 12px auto;
 }
@@ -121,7 +121,7 @@ div#navbar {
   	padding: 0 auto;
 }
 
-div#navbar ul { 
+div#navbar ul {
 	list-style:none;
 	margin: 0 auto 0 auto;
 }
@@ -193,7 +193,7 @@ p.forumname {
   font-size: 1.3em;
 }
 
-td.time { 
+td.time {
   font-size: 0.8em;
   line-height: 100%;
 }

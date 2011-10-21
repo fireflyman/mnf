@@ -6,7 +6,7 @@
     <%= submit_tag "搜索", :name => nil %>
   </p>
 <% end %>
- 
+
 <% if defined? @results %>
   <style type="text/css">
     .hilite{
@@ -14,7 +14,7 @@
       background:#F345CC;
     }
   </style>
- 
+
   <div id="search_result">
     <% @results.each do |result| %>
       <h3>

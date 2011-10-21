@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/authorization.rb'
 require File.dirname(__FILE__) + '/obligation_scope.rb'
 
 module Authorization
-  
+
   module AuthorizationInModel
 
     # If the user meets the given privilege, permitted_to? returns true
@@ -30,7 +30,7 @@ module Authorization
           {:user => options[:user],
            :object => options[:object]})
     end
-    
+
     def self.included(base) # :nodoc:
       #base.extend(ClassMethods)
       base.module_eval do
@@ -48,7 +48,7 @@ module Authorization
               else
                 parent_scope.name.tableize.to_sym
               end
-          
+
           user = options[:user] || Authorization.current_user
 
           engine = options[:engine] || Authorization::Engine.instance
@@ -58,7 +58,7 @@ module Authorization
           obligation_scope_for( privileges, :user => user,
               :context => context, :engine => engine, :model => parent_scope)
         end
-        
+
         # Builds and returns a scope with joins and conditions satisfying all obligations.
         def self.obligation_scope_for( privileges, options = {} )
           options = {
@@ -79,14 +79,14 @@ module Authorization
 
         # Named scope for limiting query results according to the authorization
         # of the current user.  If no privilege is given, :+read+ is assumed.
-        # 
+        #
         #   User.with_permissions_to
         #   User.with_permissions_to(:update)
         #   User.with_permissions_to(:update, :context => :users)
-        #   
+        #
         # As in the case of other named scopes, this one may be chained:
         #   User.with_permission_to.find(:all, :conditions...)
-        # 
+        #
         # Options
         # [:+context+]
         #   Context for the privilege to be evaluated in; defaults to the
@@ -98,24 +98,24 @@ module Authorization
         def self.with_permissions_to (*args)
           scopes[:with_permissions_to].call(self, *args)
         end
-        
+
         # Activates model security for the current model.  Then, CRUD operations
         # are checked against the authorization of the current user.  The
         # privileges are :+create+, :+read+, :+update+ and :+delete+ in the
         # context of the model.  By default, :+read+ is not checked because of
         # performance impacts, especially with large result sets.
-        # 
+        #
         #   class User < ActiveRecord::Base
         #     using_access_control
         #   end
-        #   
+        #
         # If an operation is not permitted, a Authorization::AuthorizationError
         # is raised.
         #
         # To activate model security on all models, call using_access_control
         # on ActiveRecord::Base
         #   ActiveRecord::Base.using_access_control
-        # 
+        #
         # Available options
         # [:+context+] Specify context different from the models table name.
         # [:+include_read+] Also check for :+read+ privilege after find.
@@ -133,7 +133,7 @@ module Authorization
                   :object => object, :context => options[:context])
               end
             end
-            
+
             if options[:include_read]
               # after_find is only called if after_find is implemented
               after_find do |object|

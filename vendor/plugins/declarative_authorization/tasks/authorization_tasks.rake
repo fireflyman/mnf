@@ -6,10 +6,10 @@ namespace :auth do
     require File.join(RAILS_ROOT, 'config', 'environment.rb')
     controllers = [ApplicationController]
     Dir.new("#{RAILS_ROOT}/app/controllers").entries.each do |controller_file|
-      if controller_file =~ /_controller/ 
+      if controller_file =~ /_controller/
         controllers << controller_file.gsub(".rb","").camelize.constantize
       end
-    end 
+    end
     perms = controllers.select {|c| c.send(:class_variable_defined?, :@@permissions)}.
                         inject([]) do |all, c|
       contr_context = c.name.sub("Controller", "").tableize.to_sym
@@ -23,7 +23,7 @@ namespace :auth do
       end
       all += contr_perms.reject {|cp| cp[0].nil?}.collect {|cp| cp[0..1]}
     end
-    
+
     model_files = `grep -l "^[[:space:]]*using_access_control" #{RAILS_ROOT}/app/models/*.rb`.split("\n")
     models_with_ac = model_files.collect {|mf| mf.sub(/^.*\//, "").sub(".rb", "").tableize.to_sym}
     model_security_privs = [:create, :read, :update, :delete]
@@ -48,7 +48,7 @@ namespace :auth do
         perms << [privilege, context]
       end
     end
-    
+
     `grep ".with_permissions_to" #{grep_file_pattern}`.split("\n").each do |wpt|
       file, grep_match = wpt.split(':', 2)
       context = privilege = nil
@@ -65,10 +65,10 @@ namespace :auth do
         perms << [privilege, context]
       end
     end
-    
+
     perms.uniq!
     perm_hash = {}
-    perms.each do |cp| 
+    perms.each do |cp|
       perm_hash[cp[1]] ||= []
       perm_hash[cp[1]] << cp[0]
     end

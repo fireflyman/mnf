@@ -1,4 +1,4 @@
-# Rails 3 depreciates ActionController::Routing::Routes 
+# Rails 3 depreciates ActionController::Routing::Routes
 routes = (Rails.respond_to?(:application) ? Rails.application.routes : ActionController::Routing::Routes)
 
 routes.draw do |map|

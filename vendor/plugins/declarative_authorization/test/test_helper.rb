@@ -48,7 +48,7 @@ class MockDataObject
       end
     end
   end
-  
+
   def self.descends_from_active_record?
     true
   end
@@ -60,7 +60,7 @@ class MockDataObject
   def self.name
     "Mock"
   end
-  
+
   def self.find(*args)
     raise "Couldn't find #{self.name} with id #{args[0].inspect}" unless args[0]
     new :id => args[0]
@@ -81,11 +81,11 @@ end
 class MocksController < ActionController::Base
   attr_accessor :current_user
   attr_writer :authorization_engine
-  
+
   def authorized?
     !!@authorized
   end
-  
+
   def self.define_action_methods (*methods)
     methods.each do |method|
       define_method method do
@@ -98,9 +98,9 @@ class MocksController < ActionController::Base
   def self.define_resource_actions
     define_action_methods :index, :show, :edit, :update, :new, :create, :destroy
   end
-  
+
   def logger (*args)
-    Class.new do 
+    Class.new do
       def warn(*args)
         #p args
       end
@@ -132,12 +132,12 @@ end
 
 class Test::Unit::TestCase
   include Authorization::TestHelper
-  
+
   def request! (user, action, reader, params = {})
     action = action.to_sym if action.is_a?(String)
     @controller.current_user = user
     @controller.authorization_engine = Authorization::Engine.new(reader)
-    
+
     ((params.delete(:clear) || []) + [:@authorized]).each do |var|
       @controller.instance_variable_set(var, nil)
     end

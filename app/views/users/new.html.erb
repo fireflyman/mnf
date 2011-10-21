@@ -5,16 +5,16 @@
 <% form_for @user do |f| -%>
   <p><%= f.label :login,'账号：' %><br/>
   <%= f.text_field :login %></p>
- 
+
   <p><%= f.label :email, '邮箱：' %><br/>
   <%= f.text_field :email %></p>
- 
+
   <p><%= f.label :password,'密码：' %><br/>
   <%= f.password_field :password %></p>
- 
+
   <p><%= f.label :password_confirmation, '确认密码：' %><br/>
   <%= f.password_field :password_confirmation %></p>
- 
+
   <p><%= f.submit '注册' %></p>
 <% end %>
 </fieldset>

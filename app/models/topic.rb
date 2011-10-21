@@ -25,7 +25,7 @@ class Topic < ActiveRecord::Base
   def created_at_s
     created_at.to_s(:db)
   end
- 
+
   def updated_at_s
     updated_at.to_s(:db)
   end
@@ -48,7 +48,7 @@ end
     end
   end
 
-  def sticky? 
+  def sticky?
     self.sticky == 1
   end
 
@@ -59,15 +59,15 @@ end
   def last_post_time
     self.last_post.created_at
   end
-  
+
   def <=> (other)
     self.last_post_time <=> other.last_post_time
   end
 
   def has_replies
-    !(self.replies.nil? || self.replies.empty?) 
+    !(self.replies.nil? || self.replies.empty?)
   end
-  
+
   def do_reply(options = {})
     options.merge!(:title => '')
     replies.build(options)

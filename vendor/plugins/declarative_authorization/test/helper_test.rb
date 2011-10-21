@@ -10,7 +10,7 @@ class HelperTest < ActionController::TestCase
   tests HelperMocksController
   include Authorization::AuthorizationHelper
   attr_reader :controller
-  
+
   def test_permit
     reader = Authorization::Reader::DSLReader.new
     reader.parse %{
@@ -25,16 +25,16 @@ class HelperTest < ActionController::TestCase
     }
     user = MockUser.new(:test_role)
     request!(user, :action, reader)
-    
+
     assert permitted_to?(:show, :mocks)
     assert !permitted_to?(:update, :mocks)
-    
+
     block_evaled = false
     permitted_to?(:show, :mocks) do
       block_evaled = true
     end
     assert block_evaled
-    
+
     block_evaled = false
     permitted_to?(:update, :mocks) do
       block_evaled = true
@@ -58,7 +58,7 @@ class HelperTest < ActionController::TestCase
     mock = MockDataObject.new(:test_attr => 1)
     mock_2 = MockDataObject.new(:test_attr => 2)
     request!(user, :action, reader)
-    
+
     assert permitted_to?(:show, mock)
     assert permitted_to?(:show, :mocks)
     assert !permitted_to?(:show, mock_2)
@@ -84,7 +84,7 @@ class HelperTest < ActionController::TestCase
     assert permitted_to?(:show, mock, :context => :other_mocks)
     assert !permitted_to?(:show, mock_2, :context => :other_mocks)
   end
-  
+
   def test_has_role
     reader = Authorization::Reader::DSLReader.new
     reader.parse %{
@@ -96,17 +96,17 @@ class HelperTest < ActionController::TestCase
     }
     user = MockUser.new(:test_role)
     request!(user, :action, reader)
-    
+
     assert has_role?(:test_role)
     assert !has_role?(:test_role2)
     assert !has_role?(:test_role, :test_role2)
-    
+
     block_evaled = false
     has_role?(:test_role) do
       block_evaled = true
     end
     assert block_evaled
-    
+
     block_evaled = false
     has_role?(:test_role2) do
       block_evaled = true
@@ -130,7 +130,7 @@ class HelperTest < ActionController::TestCase
     end
     assert !block_evaled
   end
-  
+
   def test_has_role_with_hierarchy
     reader = Authorization::Reader::DSLReader.new
     reader.parse %{
@@ -146,11 +146,11 @@ class HelperTest < ActionController::TestCase
           includes :test_role
         end
       end
-    }    
-    
+    }
+
     user = MockUser.new(:root)
     request!(user, :action, reader)
-    
+
     assert has_role_with_hierarchy?(:test_role)
     assert !has_role_with_hierarchy?(:other_role)
 
@@ -159,7 +159,7 @@ class HelperTest < ActionController::TestCase
       block_evaled = true
     end
     assert block_evaled
-    
+
     block_evaled = false
     has_role_with_hierarchy?(:test_role2) do
       block_evaled = true
@@ -167,6 +167,6 @@ class HelperTest < ActionController::TestCase
     assert !block_evaled
 
   end
-  
-  
+
+
 end

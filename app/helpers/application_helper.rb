@@ -20,9 +20,9 @@ module ApplicationHelper
       return "<a href='/forums'>论坛首页</a>&nbsp;&mdash;&gt;&nbsp;<a href='#{fid.to_s}'>#{frm.name}</a>"
     else
       return '未知路径'
-    end 
+    end
   end
-  
+
   def where
     return "<div id='foruminfo'><span id='where'>#{where_am_i(request.path)}</span></div>"
   end
