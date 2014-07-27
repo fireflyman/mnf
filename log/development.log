@@ -36,7 +36,7 @@ Migrating to CreateReplies (20100526070217)
 Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 15:10:28) [GET]
 
 ActionController::RoutingError (No route matches "/products" with {:method=>:get}):
-  
+
 
 Rendering rescues/layout (not_found)
 
@@ -58,7 +58,7 @@ Completed in 93ms (View: 47, DB: 0) | 200 OK [http://localhost/topics]
 Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 15:10:55) [GET]
 
 ActionController::RoutingError (No route matches "/replices" with {:method=>:get}):
-  
+
 
 Rendering rescues/layout (not_found)
 
@@ -66,7 +66,7 @@ Rendering rescues/layout (not_found)
 Processing ApplicationController#index (for 127.0.0.1 at 2010-05-26 15:11:08) [GET]
 
 ActionController::RoutingError (No route matches "/repliess" with {:method=>:get}):
-  
+
 
 Rendering rescues/layout (not_found)
 
@@ -129,7 +129,7 @@ Rendering replies/index
 
 ActionView::TemplateError (undefined local variable or method `teams_path' for #<ActionView::Base:0x4a6c06c>) on line #25 of app/views/layouts/application.html.erb:
 22:             <li class="but"><span><a href="#"><strong>Credits</strong></a></span></li>
-23:             
+23:
 24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
 25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
 26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
@@ -151,7 +151,7 @@ Rendering replies/index
 
 ActionView::TemplateError (undefined local variable or method `teams_path' for #<ActionView::Base:0x4bd06c4>) on line #25 of app/views/layouts/application.html.erb:
 22:             <li class="but"><span><a href="#"><strong>Credits</strong></a></span></li>
-23:             
+23:
 24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
 25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
 26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
@@ -172,9 +172,9 @@ Rendering template within layouts/application
 Rendering replies/index
 
 ActionView::TemplateError (undefined local variable or method `about_path' for #<ActionView::Base:0x4a41fc4>) on line #26 of app/views/layouts/application.html.erb:
-23:             
+23:
 24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
-25:             
+25:
 26:             <li class="but"><span><%= link_to '关于', about_path %></span></li>
 27:           </ul>
 28:         </div>
@@ -328,9 +328,9 @@ Rendering forums/show
 ActionView::TemplateError (undefined method `new_forum_topic_path' for #<ActionView::Base:0x6e0abcc>) on line #27 of app/views/forums/show.html.erb:
 24:  <% end %>
 25: </table>
-26: 
+26:
 27: <%= link_to "<img src='/images/post.gif' border='0' alt='发表新主题'/>", new_forum_topic_path(@forum) %>
-28: <%= link_to 'Edit', edit_forum_path(@forum) %> |<%= link_to 'Back', forums_path %> 
+28: <%= link_to 'Edit', edit_forum_path(@forum) %> |<%= link_to 'Back', forums_path %>
 29: <%= will_paginate @topics,{
 30:     :prev_label => '上一页',
 
@@ -472,11 +472,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d6b540>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -505,11 +505,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e38e3c>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -553,11 +553,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6ec2d80>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -586,11 +586,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6ccc968>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -619,11 +619,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6cfa958>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -681,11 +681,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (stack level too deep) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -716,11 +716,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (stack level too deep) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -751,11 +751,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6f12d08>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -784,11 +784,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6cf3dd8>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -817,11 +817,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e6f414>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -850,11 +850,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6db481c>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -883,11 +883,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e3aaac>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -916,11 +916,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6db4cb8>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -949,11 +949,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6e389b4>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -982,11 +982,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x7002e5c>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky? %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -1016,11 +1016,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d99c10>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box "sticky" %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -1049,11 +1049,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6f02da4>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box 'sticky' %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -1099,11 +1099,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `check_box_tag' for #<ActionView::Helpers::FormBuilder:0x6ec8884>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box_tag :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -1132,11 +1132,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d0248c>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:   <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -1174,11 +1174,11 @@ Rendering template within layouts/application
 Rendering topics/new
 
 ActionView::TemplateError (undefined method `sticky' for #<Topic:0x6d625f8>) on line #7 of app/views/topics/_form.rhtml:
-4: 
+4:
 5:   <p>
 6:   <label for='title'>标题</label><%= form.text_field :title, :width => "100%" %>
 7:    <%= form.check_box :sticky %> 置顶 </p>
-8: 
+8:
 9:   <%= form.hidden_field :forum_id %>
 10:   <p>
 
@@ -1375,11 +1375,11 @@ Rendering replies/new
 
 ActionView::TemplateError (undefined method `error_message_for' for #<ActionView::Base:0x6df16f4>) on line #3 of app/views/replies/new.html.erb:
 1: <h1>New reply</h1>
-2: 
+2:
 3: <%= error_message_for :reply %>
-4: 
+4:
 5: <%= render(:partial => 'form') %>
-6:   
+6:
 
     app/views/replies/new.html.erb:3
     app/controllers/replies_controller.rb:32:in `new'
@@ -1407,12 +1407,12 @@ Rendering replies/new
 Rendered replies/_form (16.0ms)
 
 ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x6fb4220>) on line #7 of app/views/replies/new.html.erb:
-4: 
+4:
 5: <%= render(:partial => 'form') %>
-6:   
+6:
 7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
-8:   
-9:  
+8:
+9:
 10:   <p>
 
     app/views/replies/new.html.erb:7
@@ -1441,13 +1441,13 @@ Rendering replies/new
 Rendered replies/_form (31.0ms)
 
 ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x6d4d1a8>) on line #7 of app/views/replies/new.html.erb:
-4: 
+4:
 5: <%= render(:partial => 'form') %>
-6:   
+6:
 7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
-8:   
-9:  
-10:   
+8:
+9:
+10:
 
     app/views/replies/new.html.erb:7
     app/controllers/replies_controller.rb:32:in `new'
@@ -1475,13 +1475,13 @@ Rendering replies/new
 Rendered replies/_form (15.0ms)
 
 ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x6e5201c>) on line #7 of app/views/replies/new.html.erb:
-4: 
+4:
 5: <%= render(:partial => 'form') %>
-6:   
+6:
 7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
-8:   
-9:  
-10:   
+8:
+9:
+10:
 
     app/views/replies/new.html.erb:7
     app/controllers/replies_controller.rb:32:in `new'
@@ -1509,13 +1509,13 @@ Rendering replies/new
 Rendered replies/_form (16.0ms)
 
 ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x7039560>) on line #7 of app/views/replies/new.html.erb:
-4: 
+4:
 5: <%= render(:partial => 'form') %>
-6:   
+6:
 7:   <%= f.hidden_field :forum_id,:value => @topic.forum_id %>
-8:   
-9:  
-10:   
+8:
+9:
+10:
 
     app/views/replies/new.html.erb:7
     app/controllers/replies_controller.rb:32:in `new'
@@ -1543,9 +1543,9 @@ Rendering replies/new
 Rendered replies/_form (16.0ms)
 
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #13 of app/views/replies/new.html.erb:
-10:   
-11: 
-12: 
+10:
+11:
+12:
 13: <%= link_to 'Back', forum_topic_path(@forum, @topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1576,7 +1576,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1607,7 +1607,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1638,7 +1638,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1669,7 +1669,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1700,7 +1700,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 3, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1781,7 +1781,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -1821,7 +1821,7 @@ Rendering replies/new
 ActionView::TemplateError (forum_topic_url failed to generate from {:controller=>"topics", :forum_id=>nil, :action=>"show", :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}, expected: {:controller=>"topics", :action=>"show"}, diff: {:forum_id=>nil, :id=>#<Topic id: 1, title: "In the futrue I know I was wrong", body: "明日復明日,明日何其甚,我生待明日,明...", forum_id: 1, created_at: "2010-05-26 10:33:49", updated_at: "2010-05-26 10:33:49", replies_count: 1, hits: 5, sticky: 1>}) on line #23 of app/views/replies/new.html.erb:
 20:   </p>
 21: <% end %>
-22: 
+22:
 23: <%= link_to 'Back', forum_topic_path(@forum,@topic) %>
 
     (eval):16:in `forum_topic_path'
@@ -2138,7 +2138,7 @@ Migrating to AddRolesToUsers (20100618024137)
 Processing ApplicationController#index (for 127.0.0.1 at 2010-06-18 10:51:06) [GET]
 
 ActionController::RoutingError (No route matches "/products" with {:method=>:get}):
-  
+
 
 Rendering rescues/layout (not_found)
 
@@ -2390,7 +2390,7 @@ Rendering topics/show
 
 ActionView::TemplateError (undefined local variable or method `first_reply' for #<Topic:0x485dce4>) on line #13 of app/views/topics/_topic.rhtml:
 10:   <td align='left' valign="top" class='post'>
-11:     <%=show_time(@topic.created_at) %>&nbsp;&nbsp;标题:<%=h @topic.title %> 
+11:     <%=show_time(@topic.created_at) %>&nbsp;&nbsp;标题:<%=h @topic.title %>
 12:     <hr width='98%'>
 13:     <p><%= @topic.body %></p>
 14:   </td>
@@ -2833,11 +2833,11 @@ Rendering template within layouts/application
 Rendering forums/index
 
 ActionView::TemplateError (No route matches {:action=>"index ", :controller=>"search"}) on line #22 of app/views/layouts/application.html.erb:
-19:             
+19:
 20:             <li class="but"><span><a href="#"><strong>新闻</strong></a></span></li>
 21:             <li class="but"><span><a href="#"><strong>产品展示</strong></a></span></li>
 22:             <li class="but"><span><%= link_to '搜索', :controller => 'search',:action => 'index '%></span></li>
-23:             
+23:
 24:             <li class="but"><span><%= link_to '论坛', forums_path %></span></li>
 25:             <li class="but"><span><%= link_to '留言', teams_path %></span></li>
 

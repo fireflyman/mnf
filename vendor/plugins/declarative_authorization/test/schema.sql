@@ -3,12 +3,12 @@ CREATE TABLE 'test_models' (
   'test_attr_through_id' INTEGER,
   'content' text,
   'country_id' integer,
-  'created_at' datetime, 
+  'created_at' datetime,
   'updated_at' datetime
 );
 
 CREATE TABLE 'test_attrs' (
-  'id' INTEGER PRIMARY KEY NOT NULL, 
+  'id' INTEGER PRIMARY KEY NOT NULL,
   'test_model_id' integer,
   'test_another_model_id' integer,
   'test_a_third_model_id' integer,
@@ -21,13 +21,13 @@ CREATE TABLE 'test_attrs' (
 );
 
 CREATE TABLE 'test_attr_throughs' (
-  'id' INTEGER PRIMARY KEY NOT NULL, 
+  'id' INTEGER PRIMARY KEY NOT NULL,
   'test_attr_id' integer
 );
 
 CREATE TABLE 'test_model_security_models' (
-  'id' INTEGER PRIMARY KEY NOT NULL, 
-  'attr' integer default 1, 
+  'id' INTEGER PRIMARY KEY NOT NULL,
+  'attr' integer default 1,
   'attr_2' integer default 1
 );
 

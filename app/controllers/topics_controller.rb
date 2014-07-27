@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new
     @topic.forum_id = params[:forum_id].to_i
   end
-  
+
   # GET /topics/1
   def show
     @topic = Topic.find(params[:id])

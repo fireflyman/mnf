@@ -15,7 +15,7 @@
         <td>
           <%= link_to '编辑', [:edit,user] if permitted_to? :update, user %>
           <%= link_to '删除', user, :confirm => 'Are you sure?', :method => :delete  if permitted_to? :delete, user %>
-          
+
         </td>
         <% end %>
       </tr>

@@ -11,7 +11,7 @@
  <% for topic in @topics %>
   <tr>
     <td class='topic_title'>
-     <%="<strong>置顶:" if topic.sticky? %>    
+     <%="<strong>置顶:" if topic.sticky? %>
      <%=link_to topic.title, forum_topic_url(@forum,topic)%>
      <%="</strong>" if topic.sticky? %>
    </td>
@@ -25,7 +25,7 @@
 </table>
 
 <%= link_to "<img src='/images/post.gif' border='0' alt='发表新主题'/>", new_forum_topic_path(@forum) %>
-<%= link_to 'Edit', edit_forum_path(@forum) %> |<%= link_to 'Back', forums_path %> 
+<%= link_to 'Edit', edit_forum_path(@forum) %> |<%= link_to 'Back', forums_path %>
 <%= will_paginate @topics,{
     :prev_label => '上一页',
     :next_label => '下一页',

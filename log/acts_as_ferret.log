@@ -57,11 +57,11 @@ index_for [Topic(id: integer, title: string, body: text, forum_id: integer, crea
 options: {:offset=>nil, :limit=>nil}
 ar_options: {}
 [topic] stored_fields: nil
-[topic] query: In 
+[topic] query: In
 -->+() +(class_name:Topic)
 [topic] now retrieving records from AR with options: {}
 [topic] 0 results from AR: []
-Query: In 
+Query: In
 total hits: 0, results delivered: 0
 [topic] register class Topic with index topic
 [topic] refusing re-registration of class Topic

@@ -18,7 +18,7 @@ class TestModel < ActiveRecord::Base
   has_many :test_another_attrs, :class_name => "TestAttr", :foreign_key => :test_another_model_id
   has_many :test_attr_throughs, :through => :test_attrs
   has_many :test_attrs_with_attr, :class_name => "TestAttr", :conditions => {:attr => 1}
-  has_many :test_attr_throughs_with_attr, :through => :test_attrs, 
+  has_many :test_attr_throughs_with_attr, :through => :test_attrs,
     :class_name => "TestAttrThrough", :source => :test_attr_throughs,
     :conditions => "test_attrs.attr = 1"
   has_one :test_attr_has_one, :class_name => "TestAttr"
@@ -43,7 +43,7 @@ class TestModel < ActiveRecord::Base
   unless Rails.version < "2.2"
     has_many :test_attrs_with_primary_id, :class_name => "TestAttr",
       :primary_key => :test_attr_through_id, :foreign_key => :test_attr_through_id
-    has_many :test_attr_throughs_with_primary_id, 
+    has_many :test_attr_throughs_with_primary_id,
       :through => :test_attrs_with_primary_id, :class_name => "TestAttrThrough",
       :source => :n_way_join_item
   end
@@ -89,7 +89,7 @@ end
 class TestModelSecurityModelWithFind < ActiveRecord::Base
   set_table_name "test_model_security_models"
   has_many :test_attrs
-  using_access_control :include_read => true, 
+  using_access_control :include_read => true,
     :context => :test_model_security_models
 end
 
@@ -1296,17 +1296,17 @@ class ModelTest < Test::Unit::TestCase
       end
     }
     instance = Authorization::Engine.instance(reader)
-    
+
     test_model = TestModel.create!
     test_attr = test_model.create_test_attr_has_one
     assert !test_attr.new_record?
-    
+
     user = MockUser.new(:test_role, :test_attr => test_attr)
-    
+
     assert_nothing_raised do
-      assert instance.permit?(:update, :user => user, :object => test_model.test_attr_has_one) 
+      assert instance.permit?(:update, :user => user, :object => test_model.test_attr_has_one)
     end
-    
+
     TestModel.delete_all
     TestAttr.delete_all
   end
@@ -1361,7 +1361,7 @@ class ModelTest < Test::Unit::TestCase
       object.update_attributes(:attr_2 => 2)
     end
   end
-  
+
   def test_model_security_write_not_allowed_wrong_attribute_value
     reader = Authorization::Reader::DSLReader.new
     reader.parse %{
@@ -1380,7 +1380,7 @@ class ModelTest < Test::Unit::TestCase
       end
     }
     Authorization::Engine.instance(reader)
-    
+
     Authorization.current_user = MockUser.new(:test_role)
     assert(object = TestModelSecurityModel.create)
     assert_raise Authorization::AttributeAuthorizationError do
@@ -1515,7 +1515,7 @@ class ModelTest < Test::Unit::TestCase
       end
     }
     Authorization::Engine.instance(reader)
-    
+
     test_attr = TestAttr.create
     test_attr.role_symbols << :test_role
     Authorization.current_user = test_attr
@@ -1526,7 +1526,7 @@ class ModelTest < Test::Unit::TestCase
     without_access_control do
       object.reload
     end
-    assert_equal 2, object.attr_2 
+    assert_equal 2, object.attr_2
     object.destroy
     assert_raise ActiveRecord::RecordNotFound do
       TestModelSecurityModel.find(object.id)
